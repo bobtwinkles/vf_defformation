@@ -1,0 +1,8 @@
+name: opengl_init
+version: 1.0.0
+description: >
+  Initial opengl troll tingy mkjogger
+author: Reed Koser <srkoser@gmail.com>
+dependencies:
+  browser : any
+  vector_math : any

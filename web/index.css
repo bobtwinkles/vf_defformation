@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+html {
+/*  background-color: #eee;*/
+}
+
+#header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+#render_target {
+  float: left;
+}
+
+#log {
+  float: left;
+  width: 600px;
+  background-color: white;
+  font-family : monospace;
+}
+
+.log-item {
+  width: 100%;
+  display : inline-block;
+  border-bottom: 1px solid;
+}
+
+.log-item-error {
+  color : red;
+}

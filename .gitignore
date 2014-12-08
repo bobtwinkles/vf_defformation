@@ -1,0 +1,7 @@
+# files hidden by unix convention
+.*
+# build files
+build/*
+# packages
+packages/*
+pubspec.lock
