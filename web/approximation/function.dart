@@ -19,8 +19,12 @@ Vector2 advancePoint(Vector2 start, num advance) {
 }
 
 Vector2 evaluateFunction(num x, num y) {
-  double r = sqrt(x * x + y * y);
+  // "Vortex" function
+  double r = x * x + y * y;
+  r *= 10;
   return new Vector2(y / r, -x / r);
+  // // Simple rotation
+  // return new Vector2(-y, x);
 }
 
 VertexBuffer generateVectorFieldGeometry(RenderingContext ctx, Viewport view, num vectorScale) {
@@ -34,7 +38,7 @@ VertexBuffer generateVectorFieldGeometry(RenderingContext ctx, Viewport view, nu
       num xx = xr * view.width;
       num yy = yr * view.height;
       Vector2 val = evaluateFunction(xx, yy);
-      double mag = val.x * val.x + val.y * val.y;
+      double mag = sqrt(val.x * val.x + val.y * val.y);
       val.x /= mag;
       val.y /= mag;
       int base_index = (x + y * view.subdivisions) * 2;

@@ -78,6 +78,41 @@ class VertexBuffer {
   }
 }
 
+class IndexedVertexBuffer extends VertexBuffer {
+  Uint16List _indicies;
+  Buffer _index_buffer;
+  int _num_indicies;
+
+  IndexedVertexBuffer(RenderingContext ctx, int numVerts, int numIndicies, int mode) : super (ctx, numVerts, mode) {
+    _num_indicies = numIndicies;
+    _indicies = new Uint16List(numIndicies);
+    _index_buffer = gl.createBuffer();
+  }
+
+  void sync() {
+    gl.bindBuffer(RenderingContext.ELEMENT_ARRAY_BUFFER, _index_buffer);
+    gl.bufferData(RenderingContext.ELEMENT_ARRAY_BUFFER, _indicies, STATIC_DRAW);
+    super.sync();
+  }
+
+  void setIndex(int idx, int val) {
+    _indicies[idx] = val;
+  }
+
+  void render() {
+    if (!_upToDate) {
+      sync();
+    }
+    gl.bindBuffer(ARRAY_BUFFER, _buffer);
+    gl.bindBuffer(ELEMENT_ARRAY_BUFFER, _index_buffer);
+
+    gl.vertexAttribPointer(POSITION_POSITION, 2, RenderingContext.FLOAT, false, 20, 0);
+    gl.vertexAttribPointer(POSITION_COLOR, 3, RenderingContext.FLOAT, false, 20, 8);
+
+    gl.drawElements(_mode, _num_indicies, UNSIGNED_SHORT, 0);
+  }
+}
+
 // this function breaks all kinds of encapsulation, but I wanna get this working
 void advanceBuffer(VertexBuffer buff, double step) {
   int idx;

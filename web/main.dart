@@ -49,7 +49,9 @@ void render(num ts) {
 
 void mainLoop(num ts) {
   render(ts);
-  advanceBuffer(simulationPoints, 0.001);
+  for (int i = 0; i < 5; ++i) {
+    advanceBuffer(simulationPoints, 0.001);
+  }
   window.animationFrame.then(mainLoop);
 }
 
@@ -72,7 +74,7 @@ void main() {
 }
 
 VertexBuffer createGrid(npoints) {
-  int numPoints = npoints * npoints * 2;
+  int numPoints = npoints * npoints;
   VertexBuffer out = new VertexBuffer(gl, numPoints, RenderingContext.LINES);
   for (int x = 0; x < npoints; ++x) {
     for (int y = 0; y < npoints; ++y) {
@@ -83,6 +85,39 @@ VertexBuffer createGrid(npoints) {
       out[x + y * npoints] = new Vertex(xx, yy, 0.0, 0.0, 0.0);
     }
   }
+  return out;
+}
+
+VertexBuffer createRect(int npoints, Vector2 min, Vector2 max) {
+  // 6 * npoints verts per row for the quads
+  // npoints - 1 rows
+  int numindicies = 6 * npoints * (npoints - 1) - 6; // I'm not 100% sure why we need to subtrack 6 here...
+  int numpoints = npoints * npoints;
+  double xdiff = max.x - min.x;
+  double ydiff = max.y - min.y;
+  IndexedVertexBuffer out = new IndexedVertexBuffer(gl, numpoints, numindicies, TRIANGLES);
+  int index_index = 0;
+  for (int y = 0; y < npoints; ++y) {
+    for (int x = 0; x < npoints; ++x) {
+      double xx = xdiff * (x / npoints) + min.x;
+      double yy = ydiff * (y / npoints) + min.y;
+      int idx = x + y * npoints;
+
+      out[idx] = new Vertex(xx, yy, 0.0, 1.0, 0.0);
+
+      if (index_index < numindicies) {
+        out.setIndex(index_index + 0, idx);
+        out.setIndex(index_index + 1, idx + 1);
+        out.setIndex(index_index + 2, idx + npoints);
+        out.setIndex(index_index + 3, idx + 1);
+        out.setIndex(index_index + 4, idx + npoints);
+        out.setIndex(index_index + 5, idx + 1 + npoints);
+        index_index += 6;
+      }
+    }
+  }
+  print(out._indicies);
+  out.printData();
   return out;
 }
 
@@ -139,6 +174,7 @@ void init_gl(Map<String, HttpRequest> loaded) {
   position_view_matrix = gl.getUniformLocation(basic, "mvp_matrix");
 
   vectors = generateVectorFieldGeometry(gl, view, 0.03);
-  simulationPoints = createGrid(32);
+  //simulationPoints = createGrid(32);
+  simulationPoints = createRect(64, new Vector2(0.3, 0.3), new Vector2(0.4, 0.4));
   path = renderPath(new Vector2(0.0, 0.2), 128);
 }
