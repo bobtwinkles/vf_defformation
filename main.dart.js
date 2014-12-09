@@ -3795,86 +3795,97 @@ gb:function(){return this.Ev[2]},
 gx:function(a){return this.Ev[0]},
 gy:function(a){return this.Ev[1]}}}],["","",,T,{
 "^":"",
-qu:function(a,b){var z,y,x,w,v,u,t,s,r,q,p
+qu:function(a,b){var z,y,x,w,v,u,t,s
 z=a.Ev
-y=T.Ut(z[0],z[1]).Ev
-x=T.Ut(z[0]+y[0]*b*0.5,z[1]+y[1]*b*0.5)
-w=z[0]
-v=x.Ev
-u=v[0]*b*0.5
-t=T.Ut(w+u,z[1]+u)
-u=z[0]
-w=t.Ev
-s=w[0]*b
-r=T.Ut(u+s,z[1]+s)
-s=v[0]
+T.Ut(z[0],z[1],$.Us())
+y=z[0]
+x=$.Us().Ev
+T.Ut(y+x[0]*b*0.5,z[1]+x[1]*b*0.5,$.Km())
+x=z[0]
+y=$.Km().Ev[0]
+T.Ut(x+y*b*0.5,z[1]+y*b*0.5,$.OY())
+y=z[0]
+x=$.OY().Ev[0]
+T.Ut(y+x*b,z[1]+x*b,$.X5())
+x=$.Us()
+y=$.Km()
+w=$.OY()
+y=y.Ev
+v=y[0]
+w=w.Ev
 u=w[0]
-v=v[1]
-w=w[1]
-q=new Float32Array(2)
-q[0]=s+u
-q[1]=v+w
-w=q[0]
-q=q[1]
-v=new Float32Array(2)
-v[0]=w*2
-v[1]=q*2
-q=y[0]
-w=v[0]
 y=y[1]
-v=v[1]
-u=new Float32Array(2)
-u[0]=q+w
-u[1]=y+v
-v=u[0]
-y=r.Ev
-w=y[0]
-u=u[1]
-y=y[1]
-s=new Float32Array(2)
-s[0]=v+w
-s[1]=u+y
-p=b/6
-y=s[0]
-s=s[1]
-w=new Float32Array(2)
-w[0]=y*p
-w[1]=s*p
-s=z[0]
-y=w[0]
-z=z[1]
 w=w[1]
-v=new Float32Array(2)
-v[0]=s+y
-v[1]=z+w
-return new T.z3(v)},
-Ut:function(a,b){var z,y
-z=(a*a+b*b)*10
+t=new Float32Array(2)
+t[0]=v+u
+t[1]=y+w
+w=t[0]
+t=t[1]
 y=new Float32Array(2)
-y[0]=b/z
-y[1]=-a/z
-return new T.z3(y)},
-Tg:function(a,b,c){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l
+y[0]=w*2
+y[1]=t*2
+x=x.Ev
+t=x[0]
+w=y[0]
+x=x[1]
+y=y[1]
+v=new Float32Array(2)
+v[0]=t+w
+v[1]=x+y
+y=$.X5()
+x=v[0]
+y=y.Ev
+w=y[0]
+v=v[1]
+y=y[1]
+u=new Float32Array(2)
+u[0]=x+w
+u[1]=v+y
+s=b/6
+y=u[0]
+u=u[1]
+x=new Float32Array(2)
+x[0]=y*s
+x[1]=u*s
+u=z[0]
+y=x[0]
+z=z[1]
+x=x[1]
+w=new Float32Array(2)
+w[0]=u+y
+w[1]=z+x
+return new T.z3(w)},
+Ut:function(a,b,c){var z,y
+z=(a*a+b*b)*10
+y=c.Ev
+y[0]=-b/z
+y[1]=a/z
+return c},
+Tg:function(a,b,c){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k
 z=b.wU
 y=z*z*2
 x=T.mR(a,y+4,1)
-for(w=b.R,v=b.fg,u=0;u<z;++u)for(t=2*(u/z)-1,s=t*w,r=0;r<z;++r){q=2*(r/z)-1
-p=T.Ut(s,q*v).Ev
-o=p[0]
-n=p[1]
-m=Math.sqrt(o*o+n*n)
-p[0]=p[0]/m
-p[1]=p[1]/m
-l=(u+r*z)*2
-o=p[0]
-p=p[1]
-x.u(0,l,new T.nX(t,q,m,0,0))
-x.u(0,l+1,new T.nX(t+c*o,q+c*p,1,0,0))}z=b.wh
+w=new Float32Array(H.T0(2))
+v=new T.z3(w)
+w[0]=0
+w[1]=0
+for(u=b.R,t=b.fg,s=0;s<z;++s)for(r=2*(s/z)-1,q=r*u,p=0;p<z;++p){o=2*(p/z)-1
+T.Ut(q,o*t,v)
+n=w[0]
+m=w[1]
+l=Math.sqrt(n*n+m*m)
+w[0]=w[0]/l
+w[1]=w[1]/l
+k=(s+p*z)*2
+n=w[0]
+m=w[1]
+x.u(0,k,new T.nX(r,o,l,0,0))
+x.u(0,k+1,new T.nX(r+c*n,o+c*m,1,0,0))}z=b.wh
 x.u(0,y,new T.nX(0,z,0.2,0.2,0.2))
-x.u(0,y+1,new T.nX(0,z+v,0.2,0.2,0.2))
-v=b.Dz
-x.u(0,y+2,new T.nX(v,0,0.2,0.2,0.2))
-x.u(0,y+3,new T.nX(v+w,0,0.2,0.2,0.2))
+x.u(0,y+1,new T.nX(0,z+t,0.2,0.2,0.2))
+t=b.Dz
+x.u(0,y+2,new T.nX(t,0,0.2,0.2,0.2))
+x.u(0,y+3,new T.nX(t+u,0,0.2,0.2,0.2))
 return x},
 jG:[function(a){var z,y
 J.xH(a,$.rZ)
@@ -4007,10 +4018,10 @@ $.Xb=J.w0($.Wy,$.ou,"mvp_matrix")
 $.rx=T.Tg($.Wy,$.Wr,0.03)
 z=new Float32Array(H.T0(2))
 z[0]=-0.3
-z[1]=0.3
+z[1]=-0.3
 y=new Float32Array(H.T0(2))
-y[0]=0.4
-y[1]=0.4
+y[0]=0.3
+y[1]=0.3
 $.Ix=T.Wg(64,new T.z3(z),new T.z3(y))
 y=new Float32Array(H.T0(2))
 y[0]=0
@@ -4598,6 +4609,22 @@ I.$lazy($,"_allowedElements","zX","AM",function(){var z=P.Ls(null,null,null,null
 z.FV(0,["A","ABBR","ACRONYM","ADDRESS","AREA","ARTICLE","ASIDE","AUDIO","B","BDI","BDO","BIG","BLOCKQUOTE","BR","BUTTON","CANVAS","CAPTION","CENTER","CITE","CODE","COL","COLGROUP","COMMAND","DATA","DATALIST","DD","DEL","DETAILS","DFN","DIR","DIV","DL","DT","EM","FIELDSET","FIGCAPTION","FIGURE","FONT","FOOTER","FORM","H1","H2","H3","H4","H5","H6","HEADER","HGROUP","HR","I","IFRAME","IMG","INPUT","INS","KBD","LABEL","LEGEND","LI","MAP","MARK","MENU","METER","NAV","NOBR","OL","OPTGROUP","OPTION","OUTPUT","P","PRE","PROGRESS","Q","S","SAMP","SECTION","SELECT","SMALL","SOURCE","SPAN","STRIKE","STRONG","SUB","SUMMARY","SUP","TABLE","TBODY","TD","TEXTAREA","TFOOT","TH","THEAD","TIME","TR","TRACK","TT","U","UL","VAR","VIDEO","WBR"])
 return z})
 I.$lazy($,"_attributeValidators","or","NJ",function(){return P.Fl(null,null)})
+I.$lazy($,"k1","q7","Us",function(){var z=new Float32Array(H.T0(2))
+z[0]=0
+z[1]=0
+return new T.z3(z)})
+I.$lazy($,"k2","yO","Km",function(){var z=new Float32Array(H.T0(2))
+z[0]=0
+z[1]=0
+return new T.z3(z)})
+I.$lazy($,"k3","fv","OY",function(){var z=new Float32Array(H.T0(2))
+z[0]=0
+z[1]=0
+return new T.z3(z)})
+I.$lazy($,"k4","YU","X5",function(){var z=new Float32Array(H.T0(2))
+z[0]=0
+z[1]=0
+return new T.z3(z)})
 I.$lazy($,"canvas","qN","jY",function(){return document.querySelector("#render_target")})
 I.$lazy($,"resources","tK","ec",function(){return["shaders/base.vert","shaders/base.frag"]})
 I.$lazy($,"_log_node","vY","SJ",function(){return document.querySelector("#log")})
