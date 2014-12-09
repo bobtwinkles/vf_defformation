@@ -4006,7 +4006,7 @@ P.JS(J.LV($.Wy,$.ou))}J.jO($.Wy,$.ou)
 $.Xb=J.w0($.Wy,$.ou,"mvp_matrix")
 $.rx=T.Tg($.Wy,$.Wr,0.03)
 z=new Float32Array(H.T0(2))
-z[0]=0.3
+z[0]=-0.3
 z[1]=0.3
 y=new Float32Array(H.T0(2))
 y[0]=0.4
