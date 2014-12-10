@@ -559,8 +559,8 @@ RA:{
 $0:function(){if(!this.a.xB())return
 P.rT(C.RT,this)}},
 IY:{
-"^":"a;F1,i3,G1",
-VU:function(){var z=this.F1
+"^":"a;od,i3,G1",
+VU:function(){var z=this.od
 if(z.RW){z.C9.push(this)
 return}z.vV(this.i3)}},
 JH:{
@@ -3391,7 +3391,6 @@ pC:function(a){return a.createProgram()},
 WV:function(a,b){return a.createShader(b)},
 zx:function(a,b){return a.disableVertexAttribArray(b)},
 rZ:function(a,b,c,d){return a.drawArrays(b,c,d)},
-rn:function(a,b,c,d,e){return a.drawElements(b,c,d,e)},
 CF:function(a,b){return a.enableVertexAttribArray(b)},
 fc:function(a,b){return a.getProgramInfoLog(b)},
 D7:function(a,b,c){return a.getProgramParameter(b,c)},
@@ -3887,7 +3886,7 @@ t=b.Dz
 x.u(0,y+2,new T.nX(t,0,0.2,0.2,0.2))
 x.u(0,y+3,new T.nX(t+u,0,0.2,0.2,0.2))
 return x},
-jG:[function(a){var z,y
+jG:[function(a){var z
 J.xH(a,$.rZ)
 $.rZ=a
 J.Iz($.Wy,16384)
@@ -3896,17 +3895,10 @@ J.pL($.Wy,$.Xb,!1,$.fy.Ev)
 J.Oo($.Wy,0)
 J.Oo($.Wy,1)
 $.rx.Ww()
-z=$.Ix
-if(!z.Rk)z.BF()
-J.wY($.Wy,34962,z.Zj)
-J.wY($.Wy,34963,z.cR)
-J.GB($.Wy,0,2,5126,!1,20,0)
-J.GB($.Wy,1,3,5126,!1,20,8)
-J.Hb($.Wy,z.dh,z.od,5123,0)
-$.Ii.Ww()
+$.Ix.Ww()
 J.i3($.Wy,0)
 J.i3($.Wy,1)
-for(y=0;y<5;++y)T.vD($.Ix,0.001)
+for(z=0;z<50;++z)T.vD($.Ix,0.001)
 C.ol.gm6(window).ml(T.Lo())},"$1","Lo",2,0,7],
 Iq:[function(){P.JS("science")
 var z=J.YP($.jY())
@@ -3915,49 +3907,23 @@ if(z==null){P.JS("couldn't initialize gl!")
 return}P.JS("starting loop!")
 $.rZ=0
 T.nR($.ec()).ml(T.IC()).ml(new T.em())},"$0","KW",0,0,1],
-Wg:function(a,b,c){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j
-z=6*a*(a-1)-6
-y=a*a
-x=c.Ev
-w=b.Ev
-v=x[0]-w[0]
-u=x[1]-w[1]
-x=$.Wy
-t=new T.f5(null,null,null,null,null,null,null,null)
-t.jo(x,y,4)
-t.hT(x,y,z,4)
-for(s=0,r=0;r<a;++r)for(x=u*(r/a),q=r*a,p=0;p<a;++p){o=p+q
-t.u(0,o,new T.nX(v*(p/a)+w[0],x+w[1],0,1,0))
-if(s<z){n=t.jb
-m=n.length
-if(s<0||s>=m)return H.e(n,s)
-n[s]=o
-l=s+1
-k=o+1
-if(l>=m)return H.e(n,l)
-n[l]=k
-l=s+2
-j=o+a
-if(l>=m)return H.e(n,l)
-n[l]=j
-l=s+3
-if(l>=m)return H.e(n,l)
-n[l]=k
-l=s+4
-if(l>=m)return H.e(n,l)
-n[l]=j
-j=s+5
-if(j>=m)return H.e(n,j)
-n[j]=k+a
-s+=6}}P.JS(t.jb)
-t.bV()
-return t},
+C0:function(a,b,c){var z,y,x,w,v,u,t,s,r,q,p
+z=T.mR($.Wy,a*4,2)
+for(y=c.Ev,x=b.Ev,w=3*a,v=0;v<a;++v){u=y[0]
+t=x[0]
+s=v/a*(u-t)+t
+z.u(0,v,new T.nX(s,y[1],0,0,1))
+z.u(0,w-v-1,new T.nX(s,x[1],0,0,1))}for(u=2*a,r=0;r<a;++r){t=y[1]
+q=x[1]
+p=r/a*(t-q)+q
+z.u(0,u-r-1,new T.nX(y[0],p,1,0,0))
+z.u(0,w+r,new T.nX(x[0],p,1,0,0))}return z},
 Ag:function(a,b){var z,y,x,w
 z=T.mR($.Wy,b,3)
 for(y=0;y<b;++y){x=y/b
 w=a.Ev
 z.u(0,y,new T.nX(w[0],w[1],0,x,1-x))
-a=T.qu(a,0.01)}return z},
+a=T.qu(a,0.1)}return z},
 LP:[function(a){var z,y,x,w,v,u,t
 z=J.e3($.Wy)
 y=J.fx($.Wy)
@@ -4022,7 +3988,7 @@ z[1]=-0.3
 y=new Float32Array(H.T0(2))
 y[0]=0.3
 y[1]=0.3
-$.Ix=T.Wg(64,new T.z3(z),new T.z3(y))
+$.Ix=T.C0(128,new T.z3(z),new T.z3(y))
 y=new Float32Array(H.T0(2))
 y[0]=0
 y[1]=0.2
@@ -4089,34 +4055,12 @@ nX:{
 "^":"a;x>,y>,r>,UI<,b<"},
 zA:{
 "^":"a;Mq,Zj,bd,dh,Rk",
-BF:function(){J.wY($.Wy,34962,this.Zj)
+Ww:function(){if(!this.Rk){J.wY($.Wy,34962,this.Zj)
 J.P1($.Wy,34962,this.Mq,35044)
-this.Rk=!0},
-Ww:function(){if(!this.Rk)this.BF()
-J.wY($.Wy,34962,this.Zj)
+this.Rk=!0}J.wY($.Wy,34962,this.Zj)
 J.GB($.Wy,0,2,5126,!1,20,0)
 J.GB($.Wy,1,3,5126,!1,20,8)
 J.iw($.Wy,this.dh,0,this.bd)},
-bV:function(){var z,y,x,w,v,u,t,s,r,q,p
-for(z=0;z<this.bd;++z){y=z*5
-x=this.Mq
-w=x.length
-if(y>=w)return H.e(x,y)
-v=x[y]
-u=y+1
-if(u>=w)return H.e(x,u)
-t=x[u]
-u=y+2
-if(u>=w)return H.e(x,u)
-s=x[u]
-u=y+3
-if(u>=w)return H.e(x,u)
-r=x[u]
-u=y+4
-if(u>=w)return H.e(x,u)
-q=x[u]
-p=H.d(v)+" "+H.d(t)+" "+H.d(s)+" "+H.d(r)+" "+H.d(q)
-H.qw(p)}},
 t:function(a,b){var z,y,x,w,v,u,t
 z=J.vX(b,5)
 y=this.Mq
@@ -4178,14 +4122,6 @@ this.Rk=!1},
 static:{mR:function(a,b,c){var z=new T.zA(null,null,null,null,null)
 z.jo(a,b,c)
 return z}}},
-f5:{
-"^":"zA;jb,cR,od,Mq,Zj,bd,dh,Rk",
-BF:function(){J.wY($.Wy,34963,this.cR)
-J.P1($.Wy,34963,this.jb,35044)
-T.zA.prototype.BF.call(this)},
-hT:function(a,b,c,d){this.od=c
-this.jb=new Uint16Array(H.T0(c))
-this.cR=J.Rw($.Wy)}},
 tZ:{
 "^":"a;Dz,wh,R,fg,wU",
 bu:function(a){var z,y,x,w
@@ -4344,7 +4280,6 @@ J.Ef=function(a,b){return J.RE(a).jV(a,b)}
 J.F8=function(a,b,c,d){return J.RE(a).v0(a,b,c,d)}
 J.GB=function(a,b,c,d,e,f,g){return J.RE(a).l6(a,b,c,d,e,f,g)}
 J.GP=function(a){return J.w1(a).gA(a)}
-J.Hb=function(a,b,c,d,e){return J.RE(a).rn(a,b,c,d,e)}
 J.IR=function(a,b,c){return J.RE(a).Ty(a,b,c)}
 J.Iz=function(a,b){return J.w1(a).Sl(a,b)}
 J.LV=function(a,b){return J.RE(a).fc(a,b)}

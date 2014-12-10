@@ -9,6 +9,6 @@ varying vec3 vColor;
 
 void main(void) {
   gl_Position = mvp_matrix * vec4(position, 0, 1);
-  gl_PointSize = 2.0;
+  gl_PointSize = 8.0;
   vColor = color;
 }
